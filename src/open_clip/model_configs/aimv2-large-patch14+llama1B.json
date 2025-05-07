@@ -1,0 +1,13 @@
+{
+    "embed_dim": 3072,
+    "init_logit_bias": -10,
+    "custom_text": true,
+    "vision_cfg": {
+        "image_size": 224,
+        "hf_model_name": "apple/aimv2-large-patch14-224"
+    },
+    "text_cfg": {
+        "hf_model_name": "meta-llama/Llama-3.2-1B",
+        "hf_tokenizer_name": "meta-llama/Llama-3.2-1B"
+    }
+}

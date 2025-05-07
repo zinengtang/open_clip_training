@@ -1,0 +1,32 @@
+CUDA_VISIBLE_DEVICES=5 TORCH_CUDNN_V8_API_ENABLED=1 TORCH_DISTRIBUTED_DEBUG=DETAIL torchrun  --standalone --nproc_per_node 1 -m open_clip_train.main \
+    --save-frequency 1 \
+    --save-most-recent \
+    --zeroshot-frequency 1 \
+    --dataset-config "configs/datasets/dataset_config.yaml" \
+    --lr "1e-5" \
+    --beta1 0.9 \
+    --beta2 0.95 \
+    --warmup 0 \
+    --wd 0.2 \
+    --batch-size 12 \
+    --accum-freq 256 \
+    --log-every-n-steps 1 \
+    --aug-cfg scale='(0.8, 1.0)' color_jitter='(0.32, 0.32, 0.32, 0.08)' color_jitter_prob=0.8 gray_scale_prob=0.2 \
+    --image-mean 0.5 0.5 0.5 \
+    --image-std 0.5 0.5 0.5 \
+    --epochs=300 \
+    --workers=6 \
+    --model TULIP-so400m-14-384 \
+    --pretrained WebLI \
+    --force-image-size 384 \
+    --train-num-samples 1200000000 \
+    --precision 'bf16' \
+    --local-loss \
+    --gather-with-grad \
+    --seed 100 \
+    --logs-path /home/terran/logs \
+    --name 'siglip2_so400m_384_reproduction' \
+    --ssc \
+    --siglip_weight 1.0 \
+    --ssc_weight 1.0 \
+    --grad-checkpointing 
